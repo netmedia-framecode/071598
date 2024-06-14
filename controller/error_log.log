@@ -1,0 +1,28 @@
+[2024-06-12 09:09:03] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\barang.php on line 31
+[2024-06-12 09:09:03] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\barang.php on line 31
+[2024-06-12 14:33:08] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 43
+[2024-06-12 14:33:08] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 43
+[2024-06-12 14:33:08] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 153
+[2024-06-12 14:33:09] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 153
+[2024-06-12 14:33:09] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
+[2024-06-12 14:33:09] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
+[2024-06-12 14:33:49] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
+[2024-06-12 14:33:49] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
+[2024-06-12 14:33:49] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
+[2024-06-12 14:33:49] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
+[2024-06-12 14:33:49] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
+[2024-06-12 14:33:49] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
+[2024-06-12 14:33:56] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
+[2024-06-12 14:33:56] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
+[2024-06-12 14:33:56] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
+[2024-06-12 14:33:56] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
+[2024-06-12 14:33:56] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
+[2024-06-12 14:33:56] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
+[2024-06-12 14:39:40] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
+[2024-06-12 14:39:40] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
+[2024-06-12 14:40:03] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
+[2024-06-12 14:40:03] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
+[2024-06-12 23:01:55] Error [8]: Undefined variable: sql in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
+[2024-06-12 23:01:55] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
+[2024-06-12 23:02:44] Error [8]: Undefined variable: sql in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
+[2024-06-12 23:02:44] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
