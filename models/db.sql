@@ -110,8 +110,10 @@ CREATE TABLE data_izin(
   id_izin INT AUTO_INCREMENT PRIMARY KEY,
   id_export_import INT,
   nama_pt VARCHAR(100),
+  nama_pj VARCHAR(100),
   email VARCHAR(75),
   no_hp CHAR(12),
+  alamat VARCHAR(100),
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (id_export_import) REFERENCES export_import(id_export_import) ON UPDATE CASCADE ON DELETE CASCADE

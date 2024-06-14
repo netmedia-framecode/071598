@@ -26,3 +26,11 @@
 [2024-06-12 23:01:55] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
 [2024-06-12 23:02:44] Error [8]: Undefined variable: sql in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
 [2024-06-12 23:02:44] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
+[2024-06-14 12:21:09] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
+[2024-06-14 12:21:09] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
+[2024-06-14 12:22:03] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
+[2024-06-14 12:22:03] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
+[2024-06-14 12:22:05] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
+[2024-06-14 12:22:05] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
+[2024-06-14 12:26:12] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103
+[2024-06-14 12:26:15] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103

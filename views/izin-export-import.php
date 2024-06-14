@@ -21,8 +21,10 @@ require_once("../templates/views_top.php"); ?>
           <thead>
             <tr>
               <th class="text-center">Nama PT</th>
+              <th class="text-center">Nama Penanggung Jawab</th>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
+              <th class="text-center">Alamat</th>
               <th class="text-center">Barang</th>
               <th class="text-center">Kategori</th>
               <th class="text-center">Kapasitas</th>
@@ -37,8 +39,10 @@ require_once("../templates/views_top.php"); ?>
           <tfoot>
             <tr>
               <th class="text-center">Nama PT</th>
+              <th class="text-center">Nama Penanggung Jawab</th>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
+              <th class="text-center">Alamat</th>
               <th class="text-center">Barang</th>
               <th class="text-center">Kategori</th>
               <th class="text-center">Kapasitas</th>
@@ -54,8 +58,10 @@ require_once("../templates/views_top.php"); ?>
             <?php foreach ($view_data_izin as $data) { ?>
               <tr>
                 <td><?= $data['nama_pt'] ?></td>
+                <td><?= $data['nama_pj'] ?></td>
                 <td><?= $data['email'] ?></td>
                 <td><?= $data['no_hp'] ?></td>
+                <td><?= $data['alamat'] ?></td>
                 <td><?= $data['nama_barang'] ?></td>
                 <td><?= $data['nama_kategori'] ?></td>
                 <td><?= $data['kapasitas'] ?></td>
@@ -106,12 +112,20 @@ require_once("../templates/views_top.php"); ?>
                               <input type="text" name="nama_pt" value="<?= $data['nama_pt'] ?>" class="form-control" id="nama_pt" required>
                             </div>
                             <div class="form-group">
+                              <label for="nama_pj">Nama Penanggung Jawab</label>
+                              <input type="text" name="nama_pj" value="<?= $data['nama_pj'] ?>" class="form-control" id="nama_pj" required>
+                            </div>
+                            <div class="form-group">
                               <label for="email">Email</label>
                               <input type="email" name="email" value="<?= $data['email'] ?>" class="form-control" id="email" required>
                             </div>
                             <div class="form-group">
                               <label for="no_hp">No. Telp</label>
                               <input type="number" name="no_hp" value="<?= $data['no_hp'] ?>" class="form-control" id="no_hp" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="alamat">Alamat</label>
+                              <input type="text" name="alamat" value="<?= $data['alamat'] ?>" class="form-control" id="alamat" required>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -169,11 +183,11 @@ require_once("../templates/views_top.php"); ?>
         <form action="" method="post">
           <div class="modal-body">
             <div class="form-group">
-              <label for="id_export_import">Barang Export/Import</label>
-              <select name="id_export_import" class="form-control" id="id_export_import" required>
+              <label for="id_barang">Barang Export/Import</label>
+              <select name="id_barang" class="form-control" id="id_barang" required>
                 <option value="" selected>Pilih Barang Export/Import</option>
                 <?php foreach ($view_export_import as $data_export_import) { ?>
-                  <option value="<?= $data_export_import['id_export_import'] ?>"><?= $data_export_import['nama_barang'] ?></option>
+                  <option value="<?= $data_export_import['id_barang'] ?>"><?= $data_export_import['nama_barang'] ?></option>
                 <?php } ?>
               </select>
             </div>
@@ -182,12 +196,20 @@ require_once("../templates/views_top.php"); ?>
               <input type="text" name="nama_pt" class="form-control" id="nama_pt" required>
             </div>
             <div class="form-group">
+              <label for="nama_pj">Nama Penanggung Jawab</label>
+              <input type="text" name="nama_pj" class="form-control" id="nama_pj" required>
+            </div>
+            <div class="form-group">
               <label for="email">Email</label>
               <input type="email" name="email" class="form-control" id="email" required>
             </div>
             <div class="form-group">
               <label for="no_hp">No. Telp</label>
               <input type="number" name="no_hp" class="form-control" id="no_hp" required>
+            </div>
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <input type="text" name="alamat" class="form-control" id="alamat" required>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

@@ -1025,8 +1025,10 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                 <tr>
                   <th>No</th>
                   <th>Nama PT</th>
+                  <th>Nama Penanggung Jawab</th>
                   <th>Email</th>
                   <th>No. Telp</th>
+                  <th>Alamat</th>
                   <th>Barang</th>
                   <th>Kategori</th>
                   <th>Kapasitas</th>
@@ -1041,8 +1043,10 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       $html .= '<tr>
                     <td>' . $no++ . '</td>
                     <td>' . $row['nama_pt'] . '</td>
+                    <td>' . $row['nama_pj'] . '</td>
                     <td>' . $row['email'] . '</td>
                     <td>' . $row['no_hp'] . '</td>
+                    <td>' . $row['alamat'] . '</td>
                     <td>' . $row['nama_barang'] . '</td>
                     <td>' . $row['nama_kategori'] . '</td>
                     <td>' . $row['kapasitas'] . '</td>
@@ -1076,27 +1080,31 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
     $sheet = $spreadsheet->getActiveSheet();
     $sheet->setCellValue('A1', 'No');
     $sheet->setCellValue('B1', 'Nama PT');
-    $sheet->setCellValue('C1', 'Email');
-    $sheet->setCellValue('D1', 'No. Telp');
-    $sheet->setCellValue('E1', 'Barang');
-    $sheet->setCellValue('F1', 'Kategori');
-    $sheet->setCellValue('G1', 'Kapasitas');
-    $sheet->setCellValue('H1', 'Tgl Pengiriman');
-    $sheet->setCellValue('I1', 'Daerah Asal');
-    $sheet->setCellValue('J1', 'Daerah Tujuan');
+    $sheet->setCellValue('C1', 'Nama Penanggung Jawab');
+    $sheet->setCellValue('D1', 'Email');
+    $sheet->setCellValue('E1', 'No. Telp');
+    $sheet->setCellValue('F1', 'Alamat');
+    $sheet->setCellValue('G1', 'Barang');
+    $sheet->setCellValue('H1', 'Kategori');
+    $sheet->setCellValue('I1', 'Kapasitas');
+    $sheet->setCellValue('J1', 'Tgl Pengiriman');
+    $sheet->setCellValue('K1', 'Daerah Asal');
+    $sheet->setCellValue('L1', 'Daerah Tujuan');
     $row = 2;
     $no = 1;
     while ($row_data = mysqli_fetch_assoc($result)) {
       $sheet->setCellValue('A' . $row, $no);
       $sheet->setCellValue('B' . $row, $row_data['nama_pt']);
-      $sheet->setCellValue('C' . $row, $row_data['email']);
-      $sheet->setCellValue('D' . $row, $row_data['no_hp']);
-      $sheet->setCellValue('E' . $row, $row_data['nama_barang']);
-      $sheet->setCellValue('F' . $row, $row_data['nama_kategori']);
-      $sheet->setCellValue('G' . $row, $row_data['kapasitas']);
-      $sheet->setCellValue('H' . $row, $row_data['tgl_pengiriman']);
-      $sheet->setCellValue('I' . $row, $row_data['daerah_asal']);
-      $sheet->setCellValue('J' . $row, $row_data['daerah_tujuan']);
+      $sheet->setCellValue('C' . $row, $row_data['nama_pj']);
+      $sheet->setCellValue('D' . $row, $row_data['email']);
+      $sheet->setCellValue('E' . $row, $row_data['no_hp']);
+      $sheet->setCellValue('F' . $row, $row_data['alamat']);
+      $sheet->setCellValue('G' . $row, $row_data['nama_barang']);
+      $sheet->setCellValue('H' . $row, $row_data['nama_kategori']);
+      $sheet->setCellValue('I' . $row, $row_data['kapasitas']);
+      $sheet->setCellValue('J' . $row, $row_data['tgl_pengiriman']);
+      $sheet->setCellValue('K' . $row, $row_data['daerah_asal']);
+      $sheet->setCellValue('L' . $row, $row_data['daerah_tujuan']);
       $row++;
       $no++;
     }
@@ -1115,12 +1123,12 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
   function data_izin($conn, $data, $action)
   {
     if ($action == "insert") {
-      $sql = "INSERT INTO data_izin(id_export_import,nama_pt,email,no_hp) VALUES('$data[id_export_import]','$data[nama_pt]','$data[email]','$data[no_hp]')";
+      $sql = "INSERT INTO data_izin(id_export_import,nama_pt,nama_pj,email,no_hp) VALUES('$data[id_export_import]','$data[nama_pt]',$data[nama_pj],'$data[email]','$data[no_hp]',$data[alamat])";
       mysqli_query($conn, $sql);
     }
 
     if ($action == "update") {
-      $sql = "UPDATE data_izin SET nama_pt='$data[nama_pt]', email='$data[email]', no_hp='$data[no_hp]' WHERE id_izin='$data[id_izin]'";
+      $sql = "UPDATE data_izin SET nama_pt='$data[nama_pt]', nama_pj='$data[nama_pj]', email='$data[email]', no_hp='$data[no_hp]', alamat='$data[alamat]' WHERE id_izin='$data[id_izin]'";
       mysqli_query($conn, $sql);
     }
 
