@@ -1123,7 +1123,7 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
   function data_izin($conn, $data, $action)
   {
     if ($action == "insert") {
-      $sql = "INSERT INTO data_izin(id_export_import,nama_pt,nama_pj,email,no_hp) VALUES('$data[id_export_import]','$data[nama_pt]',$data[nama_pj],'$data[email]','$data[no_hp]',$data[alamat])";
+      $sql = "INSERT INTO data_izin(id_export_import,nama_pt,nama_pj,email,no_hp,alamat) VALUES('$data[id_export_import]','$data[nama_pt]','$data[nama_pj]','$data[email]','$data[no_hp]','$data[alamat]')";
       mysqli_query($conn, $sql);
     }
 
