@@ -16,6 +16,9 @@ require_once("../templates/views_top.php"); ?>
         <table class="table table-bordered text-dark" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
+              <th class="text-center">Nama Pengirim</th>
+              <th class="text-center">No. Plat Kendaraan</th>
+              <th class="text-center">Nama Penerima</th>
               <th class="text-center">Barang</th>
               <th class="text-center">Kapasitas</th>
               <th class="text-center">Tgl Pengiriman</th>
@@ -28,6 +31,9 @@ require_once("../templates/views_top.php"); ?>
           </thead>
           <tfoot>
             <tr>
+              <th class="text-center">Nama Pengirim</th>
+              <th class="text-center">No. Plat Kendaraan</th>
+              <th class="text-center">Nama Penerima</th>
               <th class="text-center">Barang</th>
               <th class="text-center">Kapasitas</th>
               <th class="text-center">Tgl Pengiriman</th>
@@ -41,6 +47,9 @@ require_once("../templates/views_top.php"); ?>
           <tbody>
             <?php foreach ($view_export as $data) { ?>
               <tr>
+                <td><?= $data['nama_pengirim'] ?></td>
+                <td><?= $data['no_plat'] ?></td>
+                <td><?= $data['nama_penerima'] ?></td>
                 <td><?= $data['nama_barang'] ?></td>
                 <td><?= $data['kapasitas'] ?></td>
                 <td><?php $tgl_pengiriman = date_create($data["tgl_pengiriman"]);
