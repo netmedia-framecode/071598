@@ -76,13 +76,18 @@ if (!isset($_GET['auth'])) {
           </form>
           <?php } else if (isset($_SESSION["project_plbn_motamasin"]["izin"])) {
           $email = valid($conn, $_SESSION["project_plbn_motamasin"]["izin"]['email']);
-          $data_izin_user = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
-            FROM data_izin 
-            JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
-            JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
-            JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
-            WHERE data_izin.email='$email'
-            ORDER BY data_izin.id_izin DESC";
+          $data_izin_user = "SELECT di.*, k.nama_kategori
+              FROM data_izin di
+              LEFT JOIN export_import ei ON di.id_export_import = ei.id_export_import
+              JOIN kategori k ON ei.id_kategori = k.id_kategori
+              WHERE di.email='$email'
+              AND di.id_izin IN (
+                  SELECT MIN(id_izin)
+                  FROM data_izin
+                  WHERE email='$email'
+                  GROUP BY kode_izin
+              )
+          ";
           $view_data_izin_user = mysqli_query($conn, $data_izin_user);
           if (mysqli_num_rows($view_data_izin_user) > 0) { ?>
             <style>
@@ -125,36 +130,25 @@ if (!isset($_GET['auth'])) {
                 <thead>
                   <tr>
                     <th class="text-center">File</th>
+                    <th class="text-center">Tgl izin</th>
                     <th class="text-center">Nama PT</th>
                     <th class="text-center">Email</th>
                     <th class="text-center">No. Telp</th>
-                    <th class="text-center">Barang</th>
                     <th class="text-center">Kategori</th>
-                    <th class="text-center">Kapasitas</th>
-                    <th class="text-center">Tgl Pengiriman</th>
-                    <th class="text-center">Daerah Asal</th>
-                    <th class="text-center">Daerah Tujuan</th>
-                    <th class="text-center">Tgl izin</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($view_data_izin_user as $data) { ?>
                     <tr>
                       <td>
-                        <a href="export-pdf-izin?post=<?= $data['id_izin'] ?>" class="sc_contact_form_submit">Cetak</a>
+                        <a href="export-pdf-izin?post=<?= $data['kode_izin'] ?>" class="sc_contact_form_submit">Cetak</a>
                       </td>
+                      <td><span class="badge bg-success text-white"><?php $created_at = date_create($data["created_at"]);
+                                                                    echo date_format($created_at, "d M Y - h:i a"); ?></span></td>
                       <td><?= $data['nama_pt'] ?></td>
                       <td><?= $data['email'] ?></td>
                       <td><?= $data['no_hp'] ?></td>
-                      <td><?= $data['nama_barang'] ?></td>
                       <td><?= $data['nama_kategori'] ?></td>
-                      <td><?= $data['kapasitas'] ?></td>
-                      <td><?php $tgl_pengiriman = date_create($data["tgl_pengiriman"]);
-                          echo date_format($tgl_pengiriman, "d M Y"); ?></td>
-                      <td><?= $data['daerah_asal'] ?></td>
-                      <td><?= $data['daerah_tujuan'] ?></td>
-                      <td><span class="badge bg-success text-white"><?php $created_at = date_create($data["created_at"]);
-                                                                    echo date_format($created_at, "d M Y - h:i a"); ?></span></td>
                     </tr>
                   <?php } ?>
                 </tbody>

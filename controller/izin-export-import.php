@@ -4,15 +4,16 @@ require_once("../config/Base.php");
 require_once("../config/Auth.php");
 require_once("../config/Alert.php");
 
-$export_import = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang 
+$kategori = "SELECT * FROM kategori ORDER BY id_kategori DESC";
+$view_kategori = mysqli_query($conn, $kategori);
+$data_barang = "SELECT * FROM data_barang ORDER BY id_barang DESC";
+$view_data_barang = mysqli_query($conn, $data_barang);
+$export_import = "SELECT export_import.*, data_barang.nama_barang 
     FROM export_import 
-    JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
     JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
-    LEFT JOIN data_izin ON export_import.id_export_import = data_izin.id_export_import 
-    WHERE data_izin.id_export_import IS NULL 
     ORDER BY export_import.id_export_import DESC";
 $view_export_import = mysqli_query($conn, $export_import);
-$data_izin = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
+$data_izin = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.id_kategori, export_import.id_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
     FROM data_izin 
     JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
     JOIN kategori ON export_import.id_kategori = kategori.id_kategori 

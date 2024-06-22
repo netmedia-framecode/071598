@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 12 Jun 2024 pada 23.22
+-- Waktu pembuatan: 22 Jun 2024 pada 07.39
 -- Versi server: 8.3.0
 -- Versi PHP: 7.4.30
 
@@ -72,10 +72,17 @@ INSERT INTO `data_barang` (`id_barang`, `nama_barang`, `created_at`, `updated_at
 
 CREATE TABLE `data_izin` (
   `id_izin` int NOT NULL,
+  `kode_izin` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
   `id_export_import` int DEFAULT NULL,
   `nama_pt` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `nama_pj` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_pengirim` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `no_plat` varchar(15) COLLATE utf8mb4_general_ci NOT NULL,
+  `nama_penerima` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `no_hp` char(12) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `alamat` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `total_harga` int NOT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -84,8 +91,9 @@ CREATE TABLE `data_izin` (
 -- Dumping data untuk tabel `data_izin`
 --
 
-INSERT INTO `data_izin` (`id_izin`, `id_export_import`, `nama_pt`, `email`, `no_hp`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Netmedia', 'arlan270899@gmail.com', '08113827421', '2024-06-12 22:40:03', '2024-06-12 22:40:03');
+INSERT INTO `data_izin` (`id_izin`, `kode_izin`, `id_export_import`, `nama_pt`, `nama_pj`, `nama_pengirim`, `no_plat`, `nama_penerima`, `email`, `no_hp`, `alamat`, `total_harga`, `created_at`, `updated_at`) VALUES
+(1, '1', 3, 'Netmedia Framecode Ltd. ID', 'Sahala Z. R Butar Butar', 'Arlan', 'DH 4256 EB', 'Julio', 'arlan270899@gmail.com', '08113827421', 'Jln. W.J Lalamentik No.95, Kota Kupang, Nusa Tenggara, Timur, 85111', 10000, '2024-06-12 22:40:03', '2024-06-22 14:49:29'),
+(2, '1', 4, 'PT. Pustaka Lestari', 'Herman', 'Teo', 'DH 4266 EB', 'Arlan Butar Butar', 'arlan270899@gmail.com', '08113827421', 'Jln. W.J Lalamentik No.95', 1000, '2024-06-22 14:56:21', '2024-06-22 14:56:21');
 
 -- --------------------------------------------------------
 
@@ -110,9 +118,10 @@ CREATE TABLE `export_import` (
 --
 
 INSERT INTO `export_import` (`id_export_import`, `id_kategori`, `id_barang`, `kapasitas`, `tgl_pengiriman`, `daerah_asal`, `daerah_tujuan`, `created_at`, `updated_at`) VALUES
-(1, 1, 4, '24', '2024-06-11', 'soe', 'dili', '2024-06-12 20:33:07', '2024-06-12 20:46:10'),
+(1, 1, 4, '244', '2024-06-11', 'soe', 'dili', '2024-06-12 20:33:07', '2024-06-22 14:35:03'),
 (2, 1, 3, '323', '2024-06-05', 'Kupang', 'Dili', '2024-06-12 20:46:31', '2024-06-12 20:46:31'),
-(3, 2, 3, '100', '2024-06-08', 'Kupang', 'Dili', '2024-06-12 22:14:30', '2024-06-12 22:14:30');
+(3, 2, 3, '100', '2024-06-08', 'Kupang', 'Dili', '2024-06-12 22:14:30', '2024-06-12 22:14:30'),
+(4, 1, 1, '244', '2024-06-21', 'Kupang', 'Dili', '2024-06-22 14:56:21', '2024-06-22 14:56:21');
 
 -- --------------------------------------------------------
 
@@ -434,13 +443,13 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_izin`
 --
 ALTER TABLE `data_izin`
-  MODIFY `id_izin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_izin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `export_import`
 --
 ALTER TABLE `export_import`
-  MODIFY `id_export_import` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_export_import` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`

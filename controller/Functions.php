@@ -994,10 +994,6 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
 
   function export_import($conn, $data, $action)
   {
-    if ($action == "insert") {
-      $sql = "INSERT INTO export_import(id_kategori,id_barang,kapasitas,tgl_pengiriman,daerah_asal,daerah_tujuan) VALUES('$data[id_kategori]','$data[id_barang]','$data[kapasitas]','$data[tgl_pengiriman]','$data[daerah_asal]','$data[daerah_tujuan]')";
-    }
-
     if ($action == "update") {
       $sql = "UPDATE export_import SET id_barang='$data[id_barang]', kapasitas='$data[kapasitas]', tgl_pengiriman='$data[tgl_pengiriman]', daerah_asal='$data[daerah_asal]', daerah_tujuan='$data[daerah_tujuan]' WHERE id_export_import='$data[id_export_import]'";
     }
@@ -1026,6 +1022,9 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                   <th>No</th>
                   <th>Nama PT</th>
                   <th>Nama Penanggung Jawab</th>
+                  <th>Nama Pengirim</th>
+                  <th>No. Plat Kendaraan</th>
+                  <th>Nama Penerima</th>
                   <th>Email</th>
                   <th>No. Telp</th>
                   <th>Alamat</th>
@@ -1035,6 +1034,7 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                   <th>Tgl Pengiriman</th>
                   <th>Daerah Asal</th>
                   <th>Daerah Tujuan</th>
+                  <th>Total Harga</th>
                 </tr>';
     $no = 1;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -1044,6 +1044,9 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                     <td>' . $no++ . '</td>
                     <td>' . $row['nama_pt'] . '</td>
                     <td>' . $row['nama_pj'] . '</td>
+                    <td>' . $row['nama_pengirim'] . '</td>
+                    <td>' . $row['no_plat'] . '</td>
+                    <td>' . $row['nama_penerima'] . '</td>
                     <td>' . $row['email'] . '</td>
                     <td>' . $row['no_hp'] . '</td>
                     <td>' . $row['alamat'] . '</td>
@@ -1053,6 +1056,7 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                     <td>' . $tgl_pengiriman . '</td>
                     <td>' . $row['daerah_asal'] . '</td>
                     <td>' . $row['daerah_tujuan'] . '</td>
+                    <td>' . $row['total_harga'] . '</td>
                  </tr>';
     }
     $html .= '</table>';
@@ -1081,34 +1085,42 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
     $sheet->setCellValue('A1', 'No');
     $sheet->setCellValue('B1', 'Nama PT');
     $sheet->setCellValue('C1', 'Nama Penanggung Jawab');
-    $sheet->setCellValue('D1', 'Email');
-    $sheet->setCellValue('E1', 'No. Telp');
-    $sheet->setCellValue('F1', 'Alamat');
-    $sheet->setCellValue('G1', 'Barang');
-    $sheet->setCellValue('H1', 'Kategori');
-    $sheet->setCellValue('I1', 'Kapasitas');
-    $sheet->setCellValue('J1', 'Tgl Pengiriman');
-    $sheet->setCellValue('K1', 'Daerah Asal');
-    $sheet->setCellValue('L1', 'Daerah Tujuan');
+    $sheet->setCellValue('D1', 'Nama Pengirim');
+    $sheet->setCellValue('E1', 'No. Plat Kendaraan');
+    $sheet->setCellValue('F1', 'Nama Penerima');
+    $sheet->setCellValue('G1', 'Email');
+    $sheet->setCellValue('H1', 'No. Telp');
+    $sheet->setCellValue('I1', 'Alamat');
+    $sheet->setCellValue('J1', 'Barang');
+    $sheet->setCellValue('K1', 'Kategori');
+    $sheet->setCellValue('L1', 'Kapasitas');
+    $sheet->setCellValue('M1', 'Tgl Pengiriman');
+    $sheet->setCellValue('N1', 'Daerah Asal');
+    $sheet->setCellValue('O1', 'Daerah Tujuan');
+    $sheet->setCellValue('P1', 'Total Harga');
     $row = 2;
     $no = 1;
     while ($row_data = mysqli_fetch_assoc($result)) {
       $sheet->setCellValue('A' . $row, $no);
       $sheet->setCellValue('B' . $row, $row_data['nama_pt']);
       $sheet->setCellValue('C' . $row, $row_data['nama_pj']);
-      $sheet->setCellValue('D' . $row, $row_data['email']);
-      $sheet->setCellValue('E' . $row, $row_data['no_hp']);
-      $sheet->setCellValue('F' . $row, $row_data['alamat']);
-      $sheet->setCellValue('G' . $row, $row_data['nama_barang']);
-      $sheet->setCellValue('H' . $row, $row_data['nama_kategori']);
-      $sheet->setCellValue('I' . $row, $row_data['kapasitas']);
-      $sheet->setCellValue('J' . $row, $row_data['tgl_pengiriman']);
-      $sheet->setCellValue('K' . $row, $row_data['daerah_asal']);
-      $sheet->setCellValue('L' . $row, $row_data['daerah_tujuan']);
+      $sheet->setCellValue('D' . $row, $row_data['nama_pengirim']);
+      $sheet->setCellValue('E' . $row, $row_data['no_plat']);
+      $sheet->setCellValue('F' . $row, $row_data['nama_penerima']);
+      $sheet->setCellValue('G' . $row, $row_data['email']);
+      $sheet->setCellValue('H' . $row, $row_data['no_hp']);
+      $sheet->setCellValue('I' . $row, $row_data['alamat']);
+      $sheet->setCellValue('J' . $row, $row_data['nama_barang']);
+      $sheet->setCellValue('K' . $row, $row_data['nama_kategori']);
+      $sheet->setCellValue('L' . $row, $row_data['kapasitas']);
+      $sheet->setCellValue('M' . $row, $row_data['tgl_pengiriman']);
+      $sheet->setCellValue('N' . $row, $row_data['daerah_asal']);
+      $sheet->setCellValue('O' . $row, $row_data['daerah_tujuan']);
+      $sheet->setCellValue('P' . $row, $row_data['total_harga']);
       $row++;
       $no++;
     }
-    foreach (range('A', 'J') as $column) {
+    foreach (range('A', 'O') as $column) {
       $sheet->getColumnDimension($column)->setAutoSize(true);
     }
     $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
@@ -1123,12 +1135,30 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
   function data_izin($conn, $data, $action)
   {
     if ($action == "insert") {
-      $sql = "INSERT INTO data_izin(id_export_import,nama_pt,nama_pj,email,no_hp,alamat) VALUES('$data[id_export_import]','$data[nama_pt]','$data[nama_pj]','$data[email]','$data[no_hp]','$data[alamat]')";
-      mysqli_query($conn, $sql);
+      $checkID = "SELECT * FROM export_import ORDER BY id_export_import DESC LIMIT 1";
+      $checkID = mysqli_query($conn, $checkID);
+      if (mysqli_num_rows($checkID) > 0) {
+        $dataID = mysqli_fetch_assoc($checkID);
+        $id_export_import = $dataID['id_export_import'] + 1;
+      } else {
+        $id_export_import = 1;
+      }
+      // $checkKode_izin = "SELECT * FROM data_izin WHERE kode_izin='$data[kode_izin]'";
+      // $checkKode_izin = mysqli_query($conn, $checkKode_izin);
+      // if (mysqli_num_rows($checkKode_izin) > 0) {
+      //   $message = "Maaf, kode izin yang anda masukan sudah ada.";
+      //   $message_type = "danger";
+      //   alert($message, $message_type);
+      //   return false;
+      // }
+      $sql_export_import = "INSERT INTO export_import(id_export_import,id_kategori,id_barang,kapasitas,tgl_pengiriman,daerah_asal,daerah_tujuan) VALUES('$id_export_import','$data[id_kategori]','$data[id_barang]','$data[kapasitas]','$data[tgl_pengiriman]','$data[daerah_asal]','$data[daerah_tujuan]')";
+      mysqli_query($conn, $sql_export_import);
+      $sql_data_izin = "INSERT INTO data_izin(kode_izin,id_export_import,nama_pt,nama_pj,nama_pengirim,no_plat,nama_penerima,email,no_hp,alamat,total_harga) VALUES('$data[kode_izin]','$id_export_import','$data[nama_pt]','$data[nama_pj]','$data[nama_pengirim]','$data[no_plat]','$data[nama_penerima]','$data[email]','$data[no_hp]','$data[alamat]','$data[total_harga]')";
+      mysqli_query($conn, $sql_data_izin);
     }
 
     if ($action == "update") {
-      $sql = "UPDATE data_izin SET nama_pt='$data[nama_pt]', nama_pj='$data[nama_pj]', email='$data[email]', no_hp='$data[no_hp]', alamat='$data[alamat]' WHERE id_izin='$data[id_izin]'";
+      $sql = "UPDATE data_izin SET kode_izin='$data[kode_izin]', nama_pt='$data[nama_pt]', nama_pj='$data[nama_pj]', nama_pengirim='$data[nama_pengirim]', no_plat='$data[no_plat]', nama_penerima='$data[nama_penerima]', email='$data[email]', no_hp='$data[no_hp]', alamat='$data[alamat]', total_harga='$data[total_harga]' WHERE id_izin='$data[id_izin]'";
       mysqli_query($conn, $sql);
     }
 

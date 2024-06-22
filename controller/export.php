@@ -15,18 +15,6 @@ $export = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang
   WHERE kategori.nama_kategori LIKE '%Export%' 
   ORDER BY export_import.id_export_import DESC";
 $view_export = mysqli_query($conn, $export);
-if (isset($_POST["add_export"])) {
-  $validated_post = array_map(function ($value) use ($conn) {
-    return valid($conn, $value);
-  }, $_POST);
-  if (export_import($conn, $validated_post, $action = 'insert') > 0) {
-    $message = "Data export berhasil ditambahkan.";
-    $message_type = "success";
-    alert($message, $message_type);
-    header("Location: export");
-    exit();
-  }
-}
 if (isset($_POST["edit_export"])) {
   $validated_post = array_map(function ($value) use ($conn) {
     return valid($conn, $value);

@@ -15,18 +15,6 @@ $import = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang
   WHERE kategori.nama_kategori LIKE '%Import%' 
   ORDER BY export_import.id_export_import DESC";
 $view_import = mysqli_query($conn, $import);
-if (isset($_POST["add_import"])) {
-  $validated_post = array_map(function ($value) use ($conn) {
-    return valid($conn, $value);
-  }, $_POST);
-  if (export_import($conn, $validated_post, $action = 'insert') > 0) {
-    $message = "Data import berhasil ditambahkan.";
-    $message_type = "success";
-    alert($message, $message_type);
-    header("Location: import");
-    exit();
-  }
-}
 if (isset($_POST["edit_import"])) {
   $validated_post = array_map(function ($value) use ($conn) {
     return valid($conn, $value);

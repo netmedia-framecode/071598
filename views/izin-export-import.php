@@ -20,8 +20,12 @@ require_once("../templates/views_top.php"); ?>
         <table class="table table-bordered text-dark" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
+              <th class="text-center">Kode Izin</th>
               <th class="text-center">Nama PT</th>
               <th class="text-center">Nama Penanggung Jawab</th>
+              <th class="text-center">Nama Pengirim</th>
+              <th class="text-center">No. Plat Kendaraan</th>
+              <th class="text-center">Nama Penerima</th>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
               <th class="text-center">Alamat</th>
@@ -31,6 +35,7 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Tgl Pengiriman</th>
               <th class="text-center">Daerah Asal</th>
               <th class="text-center">Daerah Tujuan</th>
+              <th class="text-center">Total Harga</th>
               <th class="text-center">Tgl izin</th>
               <th class="text-center">Tgl ubah</th>
               <th class="text-center" style="width: 200px;">Aksi</th>
@@ -38,8 +43,12 @@ require_once("../templates/views_top.php"); ?>
           </thead>
           <tfoot>
             <tr>
+              <th class="text-center">Kode Izin</th>
               <th class="text-center">Nama PT</th>
               <th class="text-center">Nama Penanggung Jawab</th>
+              <th class="text-center">Nama Pengirim</th>
+              <th class="text-center">No. Plat Kendaraan</th>
+              <th class="text-center">Nama Penerima</th>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
               <th class="text-center">Alamat</th>
@@ -49,6 +58,7 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Tgl Pengiriman</th>
               <th class="text-center">Daerah Asal</th>
               <th class="text-center">Daerah Tujuan</th>
+              <th class="text-center">Total Harga</th>
               <th class="text-center">Tgl izin</th>
               <th class="text-center">Tgl ubah</th>
               <th class="text-center">Aksi</th>
@@ -57,8 +67,12 @@ require_once("../templates/views_top.php"); ?>
           <tbody>
             <?php foreach ($view_data_izin as $data) { ?>
               <tr>
+                <td><span class="badge bg-primary text-white"><?= $data['kode_izin'] ?></span></td>
                 <td><?= $data['nama_pt'] ?></td>
                 <td><?= $data['nama_pj'] ?></td>
+                <td><?= $data['nama_pengirim'] ?></td>
+                <td><?= $data['no_plat'] ?></td>
+                <td><?= $data['nama_penerima'] ?></td>
                 <td><?= $data['email'] ?></td>
                 <td><?= $data['no_hp'] ?></td>
                 <td><?= $data['alamat'] ?></td>
@@ -69,6 +83,7 @@ require_once("../templates/views_top.php"); ?>
                     echo date_format($tgl_pengiriman, "d M Y"); ?></td>
                 <td><?= $data['daerah_asal'] ?></td>
                 <td><?= $data['daerah_tujuan'] ?></td>
+                <td><?= $data['total_harga'] ?></td>
                 <td><span class="badge bg-success text-white"><?php $created_at = date_create($data["created_at"]);
                                                               echo date_format($created_at, "d M Y - h:i a"); ?></span></td>
                 <td><span class="badge bg-warning"><?php $updated_at = date_create($data["updated_at"]);
@@ -97,15 +112,8 @@ require_once("../templates/views_top.php"); ?>
                           <input type="hidden" name="nama_ptOld" value="<?= $data['nama_pt'] ?>">
                           <div class="modal-body">
                             <div class="form-group">
-                              <label for="id_export_import">Barang Export/Import</label>
-                              <select name="id_export_import" class="form-control" id="id_export_import" required>
-                                <option value="" selected>Pilih Barang Export/Import</option>
-                                <?php $id_export_import = $data['id_export_import'];
-                                foreach ($view_export_import as $data_export_import) {
-                                  $selected = ($data_export_import['id_export_import'] == $id_export_import) ? 'selected' : ''; ?>
-                                  <option value="<?= $data_export_import['id_export_import'] ?>" <?= $selected ?>><?= $data_export_import['nama_barang'] ?></option>
-                                <?php } ?>
-                              </select>
+                              <label for="kode_izin">Kode Izin</label>
+                              <input type="text" name="kode_izin" value="<?= $data['kode_izin'] ?>" class="form-control" id="kode_izin" required>
                             </div>
                             <div class="form-group">
                               <label for="nama_pt">Nama PT</label>
@@ -114,6 +122,18 @@ require_once("../templates/views_top.php"); ?>
                             <div class="form-group">
                               <label for="nama_pj">Nama Penanggung Jawab</label>
                               <input type="text" name="nama_pj" value="<?= $data['nama_pj'] ?>" class="form-control" id="nama_pj" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="nama_pengirim">Nama Pengirim</label>
+                              <input type="text" name="nama_pengirim" value="<?= $data['nama_pengirim'] ?>" class="form-control" id="nama_pengirim" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="no_plat">No. Plat Kendaraan</label>
+                              <input type="text" name="no_plat" value="<?= $data['no_plat'] ?>" class="form-control" id="no_plat" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="nama_penerima">Nama Penerima</label>
+                              <input type="text" name="nama_penerima" value="<?= $data['nama_penerima'] ?>" class="form-control" id="nama_penerima" required>
                             </div>
                             <div class="form-group">
                               <label for="email">Email</label>
@@ -126,6 +146,48 @@ require_once("../templates/views_top.php"); ?>
                             <div class="form-group">
                               <label for="alamat">Alamat</label>
                               <input type="text" name="alamat" value="<?= $data['alamat'] ?>" class="form-control" id="alamat" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="id_kategori">Kategori</label>
+                              <select name="id_kategori" class="form-control" id="id_kategori" required>
+                                <option value="" selected>Pilih Kategori</option>
+                                <?php $id_kategori = $data['id_kategori'];
+                                foreach ($view_kategori as $data_kategori) {
+                                  $selected = ($data_kategori['id_kategori'] == $id_kategori) ? 'selected' : ''; ?>
+                                  <option value="<?= $data_kategori['id_kategori'] ?>" <?= $selected ?>><?= $data_kategori['nama_kategori'] ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="id_barang">Barang</label>
+                              <select name="id_barang" class="form-control" id="id_barang" required>
+                                <option value="" selected>Pilih Barang</option>
+                                <?php $id_barang = $data['id_barang'];
+                                foreach ($view_data_barang as $data_data_barang) {
+                                  $selected = ($data_data_barang['id_barang'] == $id_barang) ? 'selected' : ''; ?>
+                                  <option value="<?= $data_data_barang['id_barang'] ?>" <?= $selected ?>><?= $data_data_barang['nama_barang'] ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label for="kapasitas">Kapasitas</label>
+                              <input type="text" name="kapasitas" value="<?= $data['kapasitas'] ?>" class="form-control" id="kapasitas" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="tgl_pengiriman">Tgl Pengiriman</label>
+                              <input type="date" name="tgl_pengiriman" value="<?= $data['tgl_pengiriman'] ?>" class="form-control" id="tgl_pengiriman" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="daerah_asal">Daerah asal</label>
+                              <input type="text" name="daerah_asal" value="<?= $data['daerah_asal'] ?>" class="form-control" id="daerah_asal" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="daerah_tujuan">Daerah tujuan</label>
+                              <input type="text" name="daerah_tujuan" value="<?= $data['daerah_tujuan'] ?>" class="form-control" id="daerah_tujuan" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="total_harga">Total Harga ($)</label>
+                              <input type="number" name="total_harga" value="<?= $data['total_harga'] ?>" class="form-control" id="total_harga" required>
                             </div>
                           </div>
                           <div class="modal-footer justify-content-center border-top-0">
@@ -183,33 +245,104 @@ require_once("../templates/views_top.php"); ?>
         <form action="" method="post">
           <div class="modal-body">
             <div class="form-group">
-              <label for="id_barang">Barang Export/Import</label>
-              <select name="id_barang" class="form-control" id="id_barang" required>
-                <option value="" selected>Pilih Barang Export/Import</option>
-                <?php foreach ($view_export_import as $data_export_import) { ?>
-                  <option value="<?= $data_export_import['id_barang'] ?>"><?= $data_export_import['nama_barang'] ?></option>
+              <label for="kode_izin">Kode Izin</label>
+              <input type="text" name="kode_izin" class="form-control" id="kode_izin" required>
+            </div>
+            <div class="form-group">
+              <label for="nama_pt">Nama PT</label>
+              <input type="text" name="nama_pt" value="<?php if (isset($_POST['nama_pt'])) {
+                                                          echo $_POST['nama_pt'];
+                                                        } ?>" class="form-control" id="nama_pt" required>
+            </div>
+            <div class="form-group">
+              <label for="nama_pj">Nama Penanggung Jawab</label>
+              <input type="text" name="nama_pj" value="<?php if (isset($_POST['nama_pj'])) {
+                                                          echo $_POST['nama_pj'];
+                                                        } ?>" class="form-control" id="nama_pj" required>
+            </div>
+            <div class="form-group">
+              <label for="nama_pengirim">Nama Pengirim</label>
+              <input type="text" name="nama_pengirim" value="<?php if (isset($_POST['nama_pengirim'])) {
+                                                                echo $_POST['nama_pengirim'];
+                                                              } ?>" class="form-control" id="nama_pengirim" required>
+            </div>
+            <div class="form-group">
+              <label for="no_plat">No. Plat Kendaraan</label>
+              <input type="text" name="no_plat" value="<?php if (isset($_POST['no_plat'])) {
+                                                          echo $_POST['no_plat'];
+                                                        } ?>" class="form-control" id="no_plat" required>
+            </div>
+            <div class="form-group">
+              <label for="nama_penerima">Nama Penerima</label>
+              <input type="text" name="nama_penerima" value="<?php if (isset($_POST['nama_penerima'])) {
+                                                                echo $_POST['nama_penerima'];
+                                                              } ?>" class="form-control" id="nama_penerima" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" name="email" value="<?php if (isset($_POST['email'])) {
+                                                        echo $_POST['email'];
+                                                      } ?>" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+              <label for="no_hp">No. Telp</label>
+              <input type="number" name="no_hp" value="<?php if (isset($_POST['no_hp'])) {
+                                                          echo $_POST['no_hp'];
+                                                        } ?>" class="form-control" id="no_hp" required>
+            </div>
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <input type="text" name="alamat" value="<?php if (isset($_POST['alamat'])) {
+                                                        echo $_POST['alamat'];
+                                                      } ?>" class="form-control" id="alamat" required>
+            </div>
+            <div class="form-group">
+              <label for="id_kategori">Kategori</label>
+              <select name="id_kategori" class="form-control" id="id_kategori" required>
+                <option value="" selected>Pilih Kategori</option>
+                <?php foreach ($view_kategori as $data_kategori) { ?>
+                  <option value="<?= $data_kategori['id_kategori'] ?>"><?= $data_kategori['nama_kategori'] ?></option>
                 <?php } ?>
               </select>
             </div>
             <div class="form-group">
-              <label for="nama_pt">Nama PT</label>
-              <input type="text" name="nama_pt" class="form-control" id="nama_pt" required>
+              <label for="id_barang">Barang</label>
+              <select name="id_barang" class="form-control" id="id_barang" required>
+                <option value="" selected>Pilih Barang</option>
+                <?php foreach ($view_data_barang as $data_data_barang) { ?>
+                  <option value="<?= $data_data_barang['id_barang'] ?>"><?= $data_data_barang['nama_barang'] ?></option>
+                <?php } ?>
+              </select>
             </div>
             <div class="form-group">
-              <label for="nama_pj">Nama Penanggung Jawab</label>
-              <input type="text" name="nama_pj" class="form-control" id="nama_pj" required>
+              <label for="kapasitas">Kapasitas</label>
+              <input type="text" name="kapasitas" value="<?php if (isset($_POST['kapasitas'])) {
+                                                            echo $_POST['kapasitas'];
+                                                          } ?>" class="form-control" id="kapasitas" required>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" name="email" class="form-control" id="email" required>
+              <label for="tgl_pengiriman">Tgl Pengiriman</label>
+              <input type="date" name="tgl_pengiriman" value="<?php if (isset($_POST['tgl_pengiriman'])) {
+                                                                echo $_POST['tgl_pengiriman'];
+                                                              } ?>" class="form-control" id="tgl_pengiriman" required>
             </div>
             <div class="form-group">
-              <label for="no_hp">No. Telp</label>
-              <input type="number" name="no_hp" class="form-control" id="no_hp" required>
+              <label for="daerah_asal">Daerah asal</label>
+              <input type="text" name="daerah_asal" value="<?php if (isset($_POST['daerah_asal'])) {
+                                                              echo $_POST['daerah_asal'];
+                                                            } ?>" class="form-control" id="daerah_asal" required>
             </div>
             <div class="form-group">
-              <label for="alamat">Alamat</label>
-              <input type="text" name="alamat" class="form-control" id="alamat" required>
+              <label for="daerah_tujuan">Daerah tujuan</label>
+              <input type="text" name="daerah_tujuan" value="<?php if (isset($_POST['daerah_tujuan'])) {
+                                                                echo $_POST['daerah_tujuan'];
+                                                              } ?>" class="form-control" id="daerah_tujuan" required>
+            </div>
+            <div class="form-group">
+              <label for="total_harga">Total Harga ($)</label>
+              <input type="number" name="total_harga" value="<?php if (isset($_POST['total_harga'])) {
+                                                                echo $_POST['total_harga'];
+                                                              } ?>" class="form-control" id="total_harga" required>
             </div>
           </div>
           <div class="modal-footer justify-content-center border-top-0">

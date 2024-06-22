@@ -34,3 +34,18 @@
 [2024-06-14 12:22:05] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
 [2024-06-14 12:26:12] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103
 [2024-06-14 12:26:15] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103
+[2024-06-22 06:18:29] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
+[2024-06-22 06:19:05] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
+[2024-06-22 06:19:49] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
+[2024-06-22 06:26:09] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:26:09] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:26:50] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:26:50] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:26:51] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:26:51] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
+[2024-06-22 06:37:14] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
+[2024-06-22 06:37:14] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
+[2024-06-22 06:37:18] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
+[2024-06-22 06:37:18] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
+[2024-06-22 06:38:23] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
+[2024-06-22 06:38:25] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
