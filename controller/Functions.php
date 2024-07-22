@@ -1028,12 +1028,13 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                   <th>Email</th>
                   <th>No. Telp</th>
                   <th>Alamat</th>
-                  <th>Barang</th>
+                  <th>Jenis Barang</th>
                   <th>Kategori</th>
                   <th>Kapasitas</th>
                   <th>Tgl Pengiriman</th>
                   <th>Daerah Asal</th>
                   <th>Daerah Tujuan</th>
+                  <th>BEA Masuk</th>
                   <th>Total Harga</th>
                 </tr>';
     $no = 1;
@@ -1056,7 +1057,8 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
                     <td>' . $tgl_pengiriman . '</td>
                     <td>' . $row['daerah_asal'] . '</td>
                     <td>' . $row['daerah_tujuan'] . '</td>
-                    <td>' . $row['total_harga'] . '</td>
+                    <td>Rp.' . number_format($row['bea_masuk']) . '</td>
+                    <td>Rp.' . number_format($row['total_harga']) . '</td>
                  </tr>';
     }
     $html .= '</table>';
@@ -1097,7 +1099,8 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
     $sheet->setCellValue('M1', 'Tgl Pengiriman');
     $sheet->setCellValue('N1', 'Daerah Asal');
     $sheet->setCellValue('O1', 'Daerah Tujuan');
-    $sheet->setCellValue('P1', 'Total Harga');
+    $sheet->setCellValue('P1', 'BEA Masuk');
+    $sheet->setCellValue('Q1', 'Total Harga');
     $row = 2;
     $no = 1;
     while ($row_data = mysqli_fetch_assoc($result)) {
@@ -1116,7 +1119,8 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       $sheet->setCellValue('M' . $row, $row_data['tgl_pengiriman']);
       $sheet->setCellValue('N' . $row, $row_data['daerah_asal']);
       $sheet->setCellValue('O' . $row, $row_data['daerah_tujuan']);
-      $sheet->setCellValue('P' . $row, $row_data['total_harga']);
+      $sheet->setCellValue('P' . $row, "Rp.".number_format($row_data['bea_masuk']));
+      $sheet->setCellValue('Q' . $row, "Rp.".number_format($row_data['total_harga']));
       $row++;
       $no++;
     }
@@ -1153,12 +1157,12 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       // }
       $sql_export_import = "INSERT INTO export_import(id_export_import,id_kategori,id_barang,kapasitas,tgl_pengiriman,daerah_asal,daerah_tujuan) VALUES('$id_export_import','$data[id_kategori]','$data[id_barang]','$data[kapasitas]','$data[tgl_pengiriman]','$data[daerah_asal]','$data[daerah_tujuan]')";
       mysqli_query($conn, $sql_export_import);
-      $sql_data_izin = "INSERT INTO data_izin(kode_izin,id_export_import,nama_pt,nama_pj,nama_pengirim,no_plat,nama_penerima,email,no_hp,alamat,total_harga) VALUES('$data[kode_izin]','$id_export_import','$data[nama_pt]','$data[nama_pj]','$data[nama_pengirim]','$data[no_plat]','$data[nama_penerima]','$data[email]','$data[no_hp]','$data[alamat]','$data[total_harga]')";
+      $sql_data_izin = "INSERT INTO data_izin(kode_izin,id_export_import,nama_pt,nama_pj,nama_pengirim,no_plat,nama_penerima,email,no_hp,alamat,bea_masuk,total_harga) VALUES('$data[kode_izin]','$id_export_import','$data[nama_pt]','$data[nama_pj]','$data[nama_pengirim]','$data[no_plat]','$data[nama_penerima]','$data[email]','$data[no_hp]','$data[alamat]','$data[bea_masuk]','$data[total_harga]')";
       mysqli_query($conn, $sql_data_izin);
     }
 
     if ($action == "update") {
-      $sql = "UPDATE data_izin SET kode_izin='$data[kode_izin]', nama_pt='$data[nama_pt]', nama_pj='$data[nama_pj]', nama_pengirim='$data[nama_pengirim]', no_plat='$data[no_plat]', nama_penerima='$data[nama_penerima]', email='$data[email]', no_hp='$data[no_hp]', alamat='$data[alamat]', total_harga='$data[total_harga]' WHERE id_izin='$data[id_izin]'";
+      $sql = "UPDATE data_izin SET kode_izin='$data[kode_izin]', nama_pt='$data[nama_pt]', nama_pj='$data[nama_pj]', nama_pengirim='$data[nama_pengirim]', no_plat='$data[no_plat]', nama_penerima='$data[nama_penerima]', email='$data[email]', no_hp='$data[no_hp]', alamat='$data[alamat]', bea_masuk='$data[bea_masuk]', total_harga='$data[total_harga]' WHERE id_izin='$data[id_izin]'";
       mysqli_query($conn, $sql);
     }
 
@@ -1327,6 +1331,356 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
     return mysqli_affected_rows($conn);
   }
 
+  function exportLaporanExportToPDF($conn)
+  {
+    $query = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang, data_izin.nama_pengirim, data_izin.no_plat, data_izin.nama_penerima 
+      FROM export_import 
+      JOIN kategori ON export_import.id_kategori=kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang=data_barang.id_barang 
+      JOIN data_izin ON export_import.id_export_import=data_izin.id_export_import 
+      WHERE kategori.nama_kategori LIKE '%Export%' 
+      ORDER BY export_import.id_export_import DESC";
+    $result = mysqli_query($conn, $query);
+    $mpdf = new \Mpdf\Mpdf();
+    $html = '<h1 style="text-align: center;">DATA LAPORAN EXPORT PLBN MOTAMASIN</h1>';
+    $html .= '<table border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                  <th>No</th>
+                  <th>Nama Pengirim</th>
+                  <th>No. Plat Kendaraan</th>
+                  <th>Nama Penerima</th>
+                  <th>Barang</th>
+                  <th>Kapasitas</th>
+                  <th>Tgl Pengiriman</th>
+                  <th>Daerah Asal</th>
+                  <th>Daerah Tujuan</th>
+                </tr>';
+    $no = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+      $tgl_pengiriman = date_create($row["tgl_pengiriman"]);
+      $tgl_pengiriman = date_format($tgl_pengiriman, "d M Y");
+      $html .= '<tr>
+                    <td>' . $no++ . '</td>
+                    <td>'. $row['nama_pengirim'] .'</td>
+                    <td>'. $row['no_plat'] .'</td>
+                    <td>'. $row['nama_penerima'] .'</td>
+                    <td>'. $row['nama_barang'] .'</td>
+                    <td>'. $row['kapasitas'] .'</td>
+                    <td>' . $tgl_pengiriman . '</td>
+                    <td>' . $row['daerah_asal'] . '</td>
+                    <td>' . $row['daerah_tujuan'] . '</td>
+                 </tr>';
+    }
+    $html .= '</table>';
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('data_export_plbn_motamasin.pdf', 'D');
+  }
+
+  function exportLaporanExportToExcel($conn)
+  {
+    $query = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang, data_izin.nama_pengirim, data_izin.no_plat, data_izin.nama_penerima 
+      FROM export_import 
+      JOIN kategori ON export_import.id_kategori=kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang=data_barang.id_barang 
+      JOIN data_izin ON export_import.id_export_import=data_izin.id_export_import 
+      WHERE kategori.nama_kategori LIKE '%Export%' 
+      ORDER BY export_import.id_export_import DESC";
+    $result = mysqli_query($conn, $query);
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $spreadsheet->getProperties()->setCreator('Creator')
+      ->setLastModifiedBy('Last Modified By')
+      ->setTitle('Data Export')
+      ->setSubject('Data Export')
+      ->setDescription('Data Export')
+      ->setKeywords('Data Export')
+      ->setCategory('Data');
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'Nama Pengirim');
+    $sheet->setCellValue('C1', 'No. Plat Kendaraan');
+    $sheet->setCellValue('D1', 'Nama Penerima');
+    $sheet->setCellValue('E1', 'Barang');
+    $sheet->setCellValue('F1', 'Kapasitas');
+    $sheet->setCellValue('G1', 'Tgl Pengiriman');
+    $sheet->setCellValue('H1', 'Daerah Asal');
+    $sheet->setCellValue('I1', 'Daerah Tujuan');
+    $row = 2;
+    $no = 1;
+    while ($row_data = mysqli_fetch_assoc($result)) {
+      $sheet->setCellValue('A' . $row, $no);
+      $sheet->setCellValue('B' . $row, $row_data['nama_pengirim']);
+      $sheet->setCellValue('C' . $row, $row_data['no_plat']);
+      $sheet->setCellValue('D' . $row, $row_data['nama_penerima']);
+      $sheet->setCellValue('E' . $row, $row_data['nama_barang']);
+      $sheet->setCellValue('F' . $row, $row_data['kapasitas']);
+      $sheet->setCellValue('G' . $row, $row_data['tgl_pengiriman']);
+      $sheet->setCellValue('H' . $row, $row_data['daerah_asal']);
+      $sheet->setCellValue('I' . $row, $row_data['daerah_tujuan']);
+      $row++;
+      $no++;
+    }
+    foreach (range('A', 'O') as $column) {
+      $sheet->getColumnDimension($column)->setAutoSize(true);
+    }
+    $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $filename = 'data_export_plbn_motamasin.xlsx';
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $filename . '"');
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit;
+  }
+
+  function export($conn, $data, $action)
+  {
+    if ($action == "export") {
+      if ($data['format_file'] === "pdf") {
+        exportLaporanExportToPDF($conn);
+      } else if ($data['format_file'] === "excel") {
+        exportLaporanExportToExcel($conn);
+      }
+    }
+
+    // mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
+  }
+
+  function exportLaporanImportToPDF($conn)
+  {
+    $query = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang, data_izin.nama_pengirim, data_izin.no_plat, data_izin.nama_penerima 
+      FROM export_import 
+      JOIN kategori ON export_import.id_kategori=kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang=data_barang.id_barang 
+      JOIN data_izin ON export_import.id_export_import=data_izin.id_export_import 
+      WHERE kategori.nama_kategori LIKE '%Import%' 
+      ORDER BY export_import.id_export_import DESC";
+    $result = mysqli_query($conn, $query);
+    $mpdf = new \Mpdf\Mpdf();
+    $html = '<h1 style="text-align: center;">DATA LAPORAN IMPORT PLBN MOTAMASIN</h1>';
+    $html .= '<table border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                  <th>No</th>
+                  <th>Nama Pengirim</th>
+                  <th>No. Plat Kendaraan</th>
+                  <th>Nama Penerima</th>
+                  <th>Barang</th>
+                  <th>Kapasitas</th>
+                  <th>Tgl Pengiriman</th>
+                  <th>Daerah Asal</th>
+                  <th>Daerah Tujuan</th>
+                </tr>';
+    $no = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+      $tgl_pengiriman = date_create($row["tgl_pengiriman"]);
+      $tgl_pengiriman = date_format($tgl_pengiriman, "d M Y");
+      $html .= '<tr>
+                    <td>' . $no++ . '</td>
+                    <td>'. $row['nama_pengirim'] .'</td>
+                    <td>'. $row['no_plat'] .'</td>
+                    <td>'. $row['nama_penerima'] .'</td>
+                    <td>'. $row['nama_barang'] .'</td>
+                    <td>'. $row['kapasitas'] .'</td>
+                    <td>' . $tgl_pengiriman . '</td>
+                    <td>' . $row['daerah_asal'] . '</td>
+                    <td>' . $row['daerah_tujuan'] . '</td>
+                 </tr>';
+    }
+    $html .= '</table>';
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('data_import_plbn_motamasin.pdf', 'D');
+  }
+
+  function exportLaporanImportToExcel($conn)
+  {
+    $query = "SELECT export_import.*, kategori.id_kategori, data_barang.nama_barang, data_izin.nama_pengirim, data_izin.no_plat, data_izin.nama_penerima 
+      FROM export_import 
+      JOIN kategori ON export_import.id_kategori=kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang=data_barang.id_barang 
+      JOIN data_izin ON export_import.id_export_import=data_izin.id_export_import 
+      WHERE kategori.nama_kategori LIKE '%Import%' 
+      ORDER BY export_import.id_export_import DESC";
+    $result = mysqli_query($conn, $query);
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $spreadsheet->getProperties()->setCreator('Creator')
+      ->setLastModifiedBy('Last Modified By')
+      ->setTitle('Data Import')
+      ->setSubject('Data Import')
+      ->setDescription('Data Import')
+      ->setKeywords('Data Import')
+      ->setCategory('Data');
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'Nama Pengirim');
+    $sheet->setCellValue('C1', 'No. Plat Kendaraan');
+    $sheet->setCellValue('D1', 'Nama Penerima');
+    $sheet->setCellValue('E1', 'Barang');
+    $sheet->setCellValue('F1', 'Kapasitas');
+    $sheet->setCellValue('G1', 'Tgl Pengiriman');
+    $sheet->setCellValue('H1', 'Daerah Asal');
+    $sheet->setCellValue('I1', 'Daerah Tujuan');
+    $row = 2;
+    $no = 1;
+    while ($row_data = mysqli_fetch_assoc($result)) {
+      $sheet->setCellValue('A' . $row, $no);
+      $sheet->setCellValue('B' . $row, $row_data['nama_pengirim']);
+      $sheet->setCellValue('C' . $row, $row_data['no_plat']);
+      $sheet->setCellValue('D' . $row, $row_data['nama_penerima']);
+      $sheet->setCellValue('E' . $row, $row_data['nama_barang']);
+      $sheet->setCellValue('F' . $row, $row_data['kapasitas']);
+      $sheet->setCellValue('G' . $row, $row_data['tgl_pengiriman']);
+      $sheet->setCellValue('H' . $row, $row_data['daerah_asal']);
+      $sheet->setCellValue('I' . $row, $row_data['daerah_tujuan']);
+      $row++;
+      $no++;
+    }
+    foreach (range('A', 'O') as $column) {
+      $sheet->getColumnDimension($column)->setAutoSize(true);
+    }
+    $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $filename = 'data_import_plbn_motamasin.xlsx';
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $filename . '"');
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit;
+  }
+
+  function import($conn, $data, $action)
+  {
+    if ($action == "export") {
+      if ($data['format_file'] === "pdf") {
+        exportLaporanImportToPDF($conn);
+      } else if ($data['format_file'] === "excel") {
+        exportLaporanImportToExcel($conn);
+      }
+    }
+
+    // mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
+  }
+
+  function exportLaporanKeuanganToPDF($conn)
+  {
+    $query = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.id_kategori, export_import.id_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
+      FROM data_izin 
+      JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
+      JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
+      ORDER BY data_izin.id_izin DESC";
+    $result = mysqli_query($conn, $query);
+    $mpdf = new \Mpdf\Mpdf();
+    $html = '<h1 style="text-align: center;">DATA LAPORAN KEUANGAN BEA MASUK PLBN MOTAMASIN</h1>';
+    $html .= '<table border="1" cellspacing="0" cellpadding="5">
+                <tr>
+                  <th>No</th>
+                  <th>Tanggal</th>
+                  <th>Jenis Barang</th>
+                  <th>Kapasitas</th>
+                  <th>Nama Pengirim</th>
+                  <th>No. Plat Kendaraan</th>
+                  <th>Nama Penerima</th>
+                  <th>Daerah Asal</th>
+                  <th>Daerah Tujuan</th>
+                  <th>BEA Masuk</th>
+                  <th>Total Bayar</th>
+                </tr>';
+    $no = 1;
+    while ($row = mysqli_fetch_assoc($result)) {
+      $created_at = date_create($row["created_at"]);
+      $created_at = date_format($created_at, "d M Y");
+      $html .= '<tr>
+                    <td>' . $no++ . '</td>
+                    <td>' . $created_at . '</td>
+                    <td>'. $row['nama_barang'] .'</td>
+                    <td>'. $row['kapasitas'] .'</td>
+                    <td>'. $row['nama_pengirim'] .'</td>
+                    <td>'. $row['no_plat'] .'</td>
+                    <td>'. $row['nama_penerima'] .'</td>
+                    <td>' . $row['daerah_asal'] . '</td>
+                    <td>' . $row['daerah_tujuan'] . '</td>
+                    <td>Rp.' . number_format($row['bea_masuk']) . '</td>
+                    <td>Rp.' . number_format($row['total_harga']) . '</td>
+                 </tr>';
+    }
+    $html .= '</table>';
+    $mpdf->WriteHTML($html);
+    $mpdf->Output('data_laporan_keuangan_bea_masuk_plbn_motamasin.pdf', 'D');
+  }
+
+  function exportLaporanKeuanganToExcel($conn)
+  {
+    $query = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.id_kategori, export_import.id_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
+      FROM data_izin 
+      JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
+      JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
+      JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
+      ORDER BY data_izin.id_izin DESC";
+    $result = mysqli_query($conn, $query);
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $spreadsheet->getProperties()->setCreator('Creator')
+      ->setLastModifiedBy('Last Modified By')
+      ->setTitle('Data Import')
+      ->setSubject('Data Import')
+      ->setDescription('Data Import')
+      ->setKeywords('Data Import')
+      ->setCategory('Data');
+    $sheet = $spreadsheet->getActiveSheet();
+    $sheet->setCellValue('A1', 'No');
+    $sheet->setCellValue('B1', 'Tgl Pengiriman');
+    $sheet->setCellValue('C1', 'Barang');
+    $sheet->setCellValue('D1', 'Kapasitas');
+    $sheet->setCellValue('E1', 'Nama Pengirim');
+    $sheet->setCellValue('F1', 'No. Plat Kendaraan');
+    $sheet->setCellValue('G1', 'Nama Penerima');
+    $sheet->setCellValue('H1', 'Daerah Asal');
+    $sheet->setCellValue('I1', 'Daerah Tujuan');
+    $sheet->setCellValue('J1', 'BEA Masuk');
+    $sheet->setCellValue('K1', 'Total Harga');
+    $row = 2;
+    $no = 1;
+    while ($row_data = mysqli_fetch_assoc($result)) {
+      $created_at = date_create($row_data["created_at"]);
+      $created_at = date_format($created_at, "d M Y");
+      $sheet->setCellValue('A' . $row, $no);
+      $sheet->setCellValue('B' . $row, $created_at);
+      $sheet->setCellValue('C' . $row, $row_data['nama_barang']);
+      $sheet->setCellValue('D' . $row, $row_data['kapasitas']);
+      $sheet->setCellValue('E' . $row, $row_data['nama_pengirim']);
+      $sheet->setCellValue('F' . $row, $row_data['no_plat']);
+      $sheet->setCellValue('G' . $row, $row_data['nama_penerima']);
+      $sheet->setCellValue('H' . $row, $row_data['daerah_asal']);
+      $sheet->setCellValue('I' . $row, $row_data['daerah_tujuan']);
+      $sheet->setCellValue('J' . $row, "Rp.".number_format($row_data['bea_masuk']));
+      $sheet->setCellValue('K' . $row, "Rp.".number_format($row_data['total_harga']));
+      $row++;
+      $no++;
+    }
+    foreach (range('A', 'K') as $column) {
+      $sheet->getColumnDimension($column)->setAutoSize(true);
+    }
+    $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $filename = 'data_laporan_keuangan_bea_masuk_plbn_motamasin.xlsx';
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="' . $filename . '"');
+    header('Cache-Control: max-age=0');
+    $writer->save('php://output');
+    exit;
+  }
+
+  function keuangan($conn, $data, $action)
+  {
+    if ($action == "export") {
+      if ($data['format_file'] === "pdf") {
+        exportLaporanKeuanganToPDF($conn);
+      } else if ($data['format_file'] === "excel") {
+        exportLaporanKeuanganToExcel($conn);
+      }
+    }
+
+    // mysqli_query($conn, $sql);
+    return mysqli_affected_rows($conn);
+  }
+  
   function __name($conn, $data, $action)
   {
     if ($action == "insert") {

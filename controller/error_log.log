@@ -1,57 +1,142 @@
-[2024-06-12 09:09:03] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\barang.php on line 31
-[2024-06-12 09:09:03] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\barang.php on line 31
-[2024-06-12 14:33:08] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 43
-[2024-06-12 14:33:08] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 43
-[2024-06-12 14:33:08] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 153
-[2024-06-12 14:33:09] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 153
-[2024-06-12 14:33:09] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
-[2024-06-12 14:33:09] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
-[2024-06-12 14:33:49] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
-[2024-06-12 14:33:49] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
-[2024-06-12 14:33:49] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
-[2024-06-12 14:33:49] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
-[2024-06-12 14:33:49] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
-[2024-06-12 14:33:49] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
-[2024-06-12 14:33:56] Error [8]: Undefined variable: view_import in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
-[2024-06-12 14:33:56] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 46
-[2024-06-12 14:33:56] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
-[2024-06-12 14:33:56] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 156
-[2024-06-12 14:33:56] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
-[2024-06-12 14:33:56] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 165
-[2024-06-12 14:39:40] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
-[2024-06-12 14:39:40] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
-[2024-06-12 14:40:03] Error [8]: Undefined variable: view_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
-[2024-06-12 14:40:03] Error [2]: mysqli_num_rows() expects parameter 1 to be mysqli_result, null given in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 161
-[2024-06-12 23:01:55] Error [8]: Undefined variable: sql in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
-[2024-06-12 23:01:55] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
-[2024-06-12 23:02:44] Error [8]: Undefined variable: sql in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
-[2024-06-12 23:02:44] Error [2]: mysqli::query(): Empty query in E:\laragon\www\apps\tugas\plbn_motamasin\views\index.php on line 107
-[2024-06-14 12:21:09] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
-[2024-06-14 12:21:09] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
-[2024-06-14 12:22:03] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
-[2024-06-14 12:22:03] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
-[2024-06-14 12:22:05] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 64
-[2024-06-14 12:22:05] Error [8]: Undefined index: alamat in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 128
-[2024-06-14 12:26:12] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103
-[2024-06-14 12:26:15] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 103
-[2024-06-22 06:18:29] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
-[2024-06-22 06:19:05] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
-[2024-06-22 06:19:49] Error [8]: Undefined index: Kode Izin in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 68
-[2024-06-22 06:26:09] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:26:09] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:26:50] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:26:50] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:26:51] Error [8]: Undefined variable: view_data_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:26:51] Error [2]: Invalid argument supplied for foreach() in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 262
-[2024-06-22 06:37:14] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
-[2024-06-22 06:37:14] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
-[2024-06-22 06:37:18] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
-[2024-06-22 06:37:18] Error [8]: Undefined index: id_barang in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 162
-[2024-06-22 06:38:23] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
-[2024-06-22 06:38:25] Error [8]: Undefined index: id_kategori in E:\laragon\www\apps\tugas\plbn_motamasin\views\izin-export-import.php on line 151
-[2024-06-22 08:33:15] Error [8]: Undefined index: nama_pengirim in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 50
-[2024-06-22 08:33:15] Error [8]: Undefined index: no_plat in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 51
-[2024-06-22 08:33:15] Error [8]: Undefined index: nama_penerima in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 52
-[2024-06-22 08:33:17] Error [8]: Undefined index: nama_pengirim in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 50
-[2024-06-22 08:33:17] Error [8]: Undefined index: no_plat in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 51
-[2024-06-22 08:33:17] Error [8]: Undefined index: nama_penerima in E:\laragon\www\apps\tugas\plbn_motamasin\views\export.php on line 52
+[2024-06-22 08:19:14] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:21:31] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:22:29] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:23:54] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:28:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:30:00] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:31:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:24] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:32:55] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:34:53] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:35:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:36:28] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:37:47] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:39:10] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:01] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:43:36] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:44:30] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:34] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:45:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:47:42] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:02] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 08:59:17] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:01:09] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:02:15] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:02:15] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:02:15] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:02:15] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-06-22 09:02:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 70
+[2024-06-22 09:02:46] Error [2]: Undefined array key "kode_izin" in /home/zjxtorpv/071598.tugasakhir.my.id/views/izin-export-import.php on line 116
+[2024-07-22 10:19:11] Error [2]: Undefined variable $view_data_izin in D:\laragon\www\apps\tugas\plbn_motamasin\views\keuangan.php on line 52
+[2024-07-22 10:19:11] Error [2]: foreach() argument must be of type array|object, null given in D:\laragon\www\apps\tugas\plbn_motamasin\views\keuangan.php on line 52

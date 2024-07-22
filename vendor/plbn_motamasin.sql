@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 22 Jun 2024 pada 07.39
--- Versi server: 8.3.0
--- Versi PHP: 7.4.30
+-- Waktu pembuatan: 22 Jul 2024 pada 10.37
+-- Versi server: 8.0.30
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `auth` (
 --
 
 INSERT INTO `auth` (`id`, `image`, `bg`) VALUES
-(1, 'auth.jpg', '#4e73de');
+(1, '1706429220.png', '#1138ac');
 
 -- --------------------------------------------------------
 
@@ -82,6 +82,7 @@ CREATE TABLE `data_izin` (
   `email` varchar(75) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `no_hp` char(12) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `alamat` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
+  `bea_masuk` int NOT NULL,
   `total_harga` int NOT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -91,9 +92,8 @@ CREATE TABLE `data_izin` (
 -- Dumping data untuk tabel `data_izin`
 --
 
-INSERT INTO `data_izin` (`id_izin`, `kode_izin`, `id_export_import`, `nama_pt`, `nama_pj`, `nama_pengirim`, `no_plat`, `nama_penerima`, `email`, `no_hp`, `alamat`, `total_harga`, `created_at`, `updated_at`) VALUES
-(1, '1', 3, 'Netmedia Framecode Ltd. ID', 'Sahala Z. R Butar Butar', 'Arlan', 'DH 4256 EB', 'Julio', 'arlan270899@gmail.com', '08113827421', 'Jln. W.J Lalamentik No.95, Kota Kupang, Nusa Tenggara, Timur, 85111', 10000, '2024-06-12 22:40:03', '2024-06-22 14:49:29'),
-(2, '1', 4, 'PT. Pustaka Lestari', 'Herman', 'Teo', 'DH 4266 EB', 'Arlan Butar Butar', 'arlan270899@gmail.com', '08113827421', 'Jln. W.J Lalamentik No.95', 1000, '2024-06-22 14:56:21', '2024-06-22 14:56:21');
+INSERT INTO `data_izin` (`id_izin`, `kode_izin`, `id_export_import`, `nama_pt`, `nama_pj`, `nama_pengirim`, `no_plat`, `nama_penerima`, `email`, `no_hp`, `alamat`, `bea_masuk`, `total_harga`, `created_at`, `updated_at`) VALUES
+(4, '1', 2, 'PT. Pustaka Lestari', 'Herman', 'Arlan', 'DH 4266 EB', 'Arlan Butar Butar', 'gelikocantik@gmail.com', '0811', 'Jln. W.J Lalamentik No.95', 50000, 150000, '2024-06-22 16:33:29', '2024-07-22 18:03:29');
 
 -- --------------------------------------------------------
 
@@ -118,10 +118,8 @@ CREATE TABLE `export_import` (
 --
 
 INSERT INTO `export_import` (`id_export_import`, `id_kategori`, `id_barang`, `kapasitas`, `tgl_pengiriman`, `daerah_asal`, `daerah_tujuan`, `created_at`, `updated_at`) VALUES
-(1, 1, 4, '244', '2024-06-11', 'soe', 'dili', '2024-06-12 20:33:07', '2024-06-22 14:35:03'),
-(2, 1, 3, '323', '2024-06-05', 'Kupang', 'Dili', '2024-06-12 20:46:31', '2024-06-12 20:46:31'),
-(3, 2, 3, '100', '2024-06-08', 'Kupang', 'Dili', '2024-06-12 22:14:30', '2024-06-12 22:14:30'),
-(4, 1, 1, '244', '2024-06-21', 'Kupang', 'Dili', '2024-06-22 14:56:21', '2024-06-22 14:56:21');
+(1, 1, 1, '100', '2024-06-22', 'Kupang', 'Dili', '2024-06-22 16:31:29', '2024-06-22 16:31:29'),
+(2, 1, 1, '100', '2024-06-22', 'Kupang', 'Dili', '2024-06-22 16:33:29', '2024-06-22 16:33:29');
 
 -- --------------------------------------------------------
 
@@ -172,7 +170,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `id_role`, `id_active`, `en_user`, `token`, `name`, `image`, `email`, `password`, `alamat`, `telp`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, NULL, NULL, 'developer', 'default.svg', 'developer@gmail.com', '$2y$10$//KMATh3ibPoI3nHFp7x/u7vnAbo2WyUgmI4x0CVVrH8ajFhMvbjG', '', 0, '2024-05-21 19:37:54', '2024-05-21 19:37:54'),
-(2, 2, 1, NULL, NULL, 'admin', 'default.svg', 'admin@gmail.com', '$2y$10$//KMATh3ibPoI3nHFp7x/u7vnAbo2WyUgmI4x0CVVrH8ajFhMvbjG', '', 0, '2024-05-21 19:37:54', '2024-05-21 19:37:54');
+(2, 2, 1, NULL, NULL, 'admin', 'default.svg', 'admin@gmail.com', '$2y$10$//KMATh3ibPoI3nHFp7x/u7vnAbo2WyUgmI4x0CVVrH8ajFhMvbjG', '', 0, '2024-05-21 19:37:54', '2024-05-21 19:37:54'),
+(3, 3, 1, '2y10ivAx3fY43Q5LuL6jZ50gusnXm0eIMKFuzkDZX0PMhI1zfTxXj6', '580798', 'iren', 'default.svg', 'irenpasu@gmail.com', '$2y$10$.wRCiB/qxJitZMekuYzLke25tiUrAUspmYgh6vSmmzQ.gF0Bcp0/6', '', 0, '2024-06-21 09:56:10', '2024-06-21 09:56:36');
 
 --
 -- Trigger `users`
@@ -209,7 +208,9 @@ INSERT INTO `user_access_menu` (`id_access_menu`, `id_role`, `id_menu`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3),
-(4, 2, 3);
+(4, 2, 3),
+(5, 1, 4),
+(6, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -243,7 +244,13 @@ INSERT INTO `user_access_sub_menu` (`id_access_sub_menu`, `id_role`, `id_sub_men
 (13, 2, 8),
 (14, 2, 9),
 (15, 2, 10),
-(16, 2, 11);
+(16, 2, 11),
+(17, 1, 12),
+(18, 1, 13),
+(19, 1, 14),
+(20, 2, 12),
+(21, 2, 13),
+(22, 2, 14);
 
 -- --------------------------------------------------------
 
@@ -263,7 +270,8 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id_menu`, `menu`) VALUES
 (1, 'User Management'),
 (2, 'Menu Management'),
-(3, 'Data PLBN');
+(3, 'Data PLBN'),
+(4, 'Laporan');
 
 -- --------------------------------------------------------
 
@@ -334,7 +342,10 @@ INSERT INTO `user_sub_menu` (`id_sub_menu`, `id_menu`, `id_active`, `title`, `ur
 (8, 3, 1, 'Barang', 'barang', 'fas fa-boxes'),
 (9, 3, 1, 'Export', 'export', 'fas fa-pallet'),
 (10, 3, 1, 'Import', 'import', 'fas fa-truck-loading'),
-(11, 3, 1, 'Izin Export Import', 'izin-export-import', 'fas fa-file-invoice');
+(11, 3, 1, 'Izin Export Import', 'izin-export-import', 'fas fa-file-invoice'),
+(12, 4, 1, 'Exports', 'exports', 'fas fa-file-archive'),
+(13, 4, 1, 'Imports', 'imports', 'fas fa-file-archive'),
+(14, 4, 1, 'Keuangan', 'keuangan', 'fas fa-file-archive');
 
 --
 -- Indexes for dumped tables
@@ -443,13 +454,13 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_izin`
 --
 ALTER TABLE `data_izin`
-  MODIFY `id_izin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_izin` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `export_import`
 --
 ALTER TABLE `export_import`
-  MODIFY `id_export_import` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_export_import` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `kategori`
@@ -461,25 +472,25 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id_access_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_access_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_sub_menu`
 --
 ALTER TABLE `user_access_sub_menu`
-  MODIFY `id_access_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_access_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
@@ -497,7 +508,7 @@ ALTER TABLE `user_status`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_sub_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

@@ -29,12 +29,13 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
               <th class="text-center">Alamat</th>
-              <th class="text-center">Barang</th>
+              <th class="text-center">Jenis Barang</th>
               <th class="text-center">Kategori</th>
               <th class="text-center">Kapasitas</th>
               <th class="text-center">Tgl Pengiriman</th>
               <th class="text-center">Daerah Asal</th>
               <th class="text-center">Daerah Tujuan</th>
+              <th class="text-center">BEA Masuk</th>
               <th class="text-center">Total Harga</th>
               <th class="text-center">Tgl izin</th>
               <th class="text-center">Tgl ubah</th>
@@ -52,12 +53,13 @@ require_once("../templates/views_top.php"); ?>
               <th class="text-center">Email</th>
               <th class="text-center">No. Telp</th>
               <th class="text-center">Alamat</th>
-              <th class="text-center">Barang</th>
+              <th class="text-center">Jenis Barang</th>
               <th class="text-center">Kategori</th>
               <th class="text-center">Kapasitas</th>
               <th class="text-center">Tgl Pengiriman</th>
               <th class="text-center">Daerah Asal</th>
               <th class="text-center">Daerah Tujuan</th>
+              <th class="text-center">BEA Masuk</th>
               <th class="text-center">Total Harga</th>
               <th class="text-center">Tgl izin</th>
               <th class="text-center">Tgl ubah</th>
@@ -83,7 +85,8 @@ require_once("../templates/views_top.php"); ?>
                     echo date_format($tgl_pengiriman, "d M Y"); ?></td>
                 <td><?= $data['daerah_asal'] ?></td>
                 <td><?= $data['daerah_tujuan'] ?></td>
-                <td><?= $data['total_harga'] ?></td>
+                <td>Rp.<?= number_format($data['bea_masuk']) ?></td>
+                <td>Rp.<?= number_format($data['total_harga']) ?></td>
                 <td><span class="badge bg-success text-white"><?php $created_at = date_create($data["created_at"]);
                                                               echo date_format($created_at, "d M Y - h:i a"); ?></span></td>
                 <td><span class="badge bg-warning"><?php $updated_at = date_create($data["updated_at"]);
@@ -171,7 +174,7 @@ require_once("../templates/views_top.php"); ?>
                             </div>
                             <div class="form-group">
                               <label for="kapasitas">Kapasitas</label>
-                              <input type="text" name="kapasitas" value="<?= $data['kapasitas'] ?>" class="form-control" id="kapasitas" required>
+                              <input type="number" name="kapasitas" value="<?= $data['kapasitas'] ?>" class="form-control" id="kapasitas" required>
                             </div>
                             <div class="form-group">
                               <label for="tgl_pengiriman">Tgl Pengiriman</label>
@@ -184,6 +187,10 @@ require_once("../templates/views_top.php"); ?>
                             <div class="form-group">
                               <label for="daerah_tujuan">Daerah tujuan</label>
                               <input type="text" name="daerah_tujuan" value="<?= $data['daerah_tujuan'] ?>" class="form-control" id="daerah_tujuan" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="bea_masuk">BEA Masuk</label>
+                              <input type="number" name="bea_masuk" value="<?= $data['bea_masuk'] ?>" class="form-control" id="bea_masuk" required>
                             </div>
                             <div class="form-group">
                               <label for="total_harga">Total Harga ($)</label>
@@ -316,7 +323,7 @@ require_once("../templates/views_top.php"); ?>
             </div>
             <div class="form-group">
               <label for="kapasitas">Kapasitas</label>
-              <input type="text" name="kapasitas" value="<?php if (isset($_POST['kapasitas'])) {
+              <input type="number" name="kapasitas" value="<?php if (isset($_POST['kapasitas'])) {
                                                             echo $_POST['kapasitas'];
                                                           } ?>" class="form-control" id="kapasitas" required>
             </div>
@@ -339,7 +346,13 @@ require_once("../templates/views_top.php"); ?>
                                                               } ?>" class="form-control" id="daerah_tujuan" required>
             </div>
             <div class="form-group">
-              <label for="total_harga">Total Harga ($)</label>
+              <label for="bea_masuk">BEA Masuk</label>
+              <input type="number" name="bea_masuk" value="<?php if (isset($_POST['bea_masuk'])) {
+                                                                echo $_POST['bea_masuk'];
+                                                              } ?>" class="form-control" id="bea_masuk" required>
+            </div>
+            <div class="form-group">
+              <label for="total_harga">Total Harga</label>
               <input type="number" name="total_harga" value="<?php if (isset($_POST['total_harga'])) {
                                                                 echo $_POST['total_harga'];
                                                               } ?>" class="form-control" id="total_harga" required>

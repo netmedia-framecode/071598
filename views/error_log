@@ -1,0 +1,24 @@
+[22-Jun-2024 09:34:35 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[23-Jun-2024 06:00:19 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[23-Jun-2024 06:00:27 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[23-Jun-2024 06:01:32 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[24-Jun-2024 06:41:00 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[09-Jul-2024 03:12:14 UTC] PHP Warning:  Undefined array key "nama_pt" in /home/zjxtorpv/071598.tugasakhir.my.id/controller/izin-export-import.php on line 64
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 3
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 3
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 3
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 4
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 4
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 4
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 5
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 5
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 5
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 6
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 6
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 6
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 7
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 7
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 7
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Undefined array key "project_plbn_motamasin" in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 8
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 8
+[22-Jul-2024 04:43:52 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/zjxtorpv/071598.tugasakhir.my.id/config/Auth.php on line 8

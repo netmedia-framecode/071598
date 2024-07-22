@@ -83,7 +83,7 @@ require_once("../templates/views_top.php"); ?>
           <div class="chart-area">
             <?php
             $currentYear = date('Y');
-            $sql = "SELECT 'Export' as category, MONTH(data_izin.created_at) as month, COUNT(data_izin.*) as total 
+            $sql = "SELECT 'Export' as category, MONTH(data_izin.created_at) as month, COUNT(*) as total 
                 FROM data_izin 
                 JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
                 JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
@@ -94,7 +94,7 @@ require_once("../templates/views_top.php"); ?>
 
                 UNION ALL
 
-                SELECT 'Import' as category, MONTH(data_izin.created_at) as month, COUNT(data_izin.*) as total 
+                SELECT 'Import' as category, MONTH(data_izin.created_at) as month, COUNT(*) as total 
                 FROM data_izin 
                 JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
                 JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
