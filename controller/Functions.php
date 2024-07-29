@@ -977,11 +977,11 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
   function data_barang($conn, $data, $action)
   {
     if ($action == "insert") {
-      $sql = "INSERT INTO data_barang(nama_barang) VALUES('$data[nama_barang]')";
+      $sql = "INSERT INTO data_barang(nama_barang,detail_barang) VALUES('$data[nama_barang]','$data[detail_barang]')";
     }
 
     if ($action == "update") {
-      $sql = "UPDATE data_barang SET nama_barang='$data[nama_barang]' WHERE id_barang='$data[id_barang]'";
+      $sql = "UPDATE data_barang SET nama_barang='$data[nama_barang]', detail_barang='$data[detail_barang]' WHERE id_barang='$data[id_barang]'";
     }
 
     if ($action == "delete") {
@@ -1561,28 +1561,29 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
 
   function exportLaporanKeuanganToPDF($conn)
   {
-    $query = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.id_kategori, export_import.id_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
-      FROM data_izin 
-      JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
-      JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
-      JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
-      ORDER BY data_izin.id_izin DESC";
+    $query = "SELECT * FROM keuangan ORDER BY id_keuangan DESC";
     $result = mysqli_query($conn, $query);
     $mpdf = new \Mpdf\Mpdf();
-    $html = '<h1 style="text-align: center;">DATA LAPORAN KEUANGAN BEA MASUK PLBN MOTAMASIN</h1>';
+    $html = '<h1 style="text-align: center;">DATA KEGIATAN KEPABEANAN PLBN MOTAMASIN <br>'.date('M Y').'</h1>';
     $html .= '<table border="1" cellspacing="0" cellpadding="5">
                 <tr>
-                  <th>No</th>
-                  <th>Tanggal</th>
-                  <th>Jenis Barang</th>
-                  <th>Kapasitas</th>
-                  <th>Nama Pengirim</th>
-                  <th>No. Plat Kendaraan</th>
-                  <th>Nama Penerima</th>
-                  <th>Daerah Asal</th>
-                  <th>Daerah Tujuan</th>
-                  <th>BEA Masuk</th>
-                  <th>Total Bayar</th>
+                  <th rowspan="2">No</th>
+                  <th rowspan="2">Tanggal</th>
+                  <th colspan="6">Ekspor (BC 3.0)</th>
+                  <th colspan="5">Impor (BC 2.0)</th>
+                </tr>
+                <tr>
+                  <th>Jumlah PEB</th>
+                  <th>Netto (KG)</th>
+                  <th>Devisa (USD)</th>
+                  <th>Devisa (RP)</th>
+                  <th>Komoditi</th>
+                  <th>Sarana Angkut</th>
+                  <th>Jumlah PIB</th>
+                  <th>Bruto (KG)</th>
+                  <th>Penerimaan Bea Masuk (RP)</th>
+                  <th>Komoditi</th>
+                  <th>Sarana Angkut</th>
                 </tr>';
     $no = 1;
     while ($row = mysqli_fetch_assoc($result)) {
@@ -1591,30 +1592,27 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       $html .= '<tr>
                     <td>' . $no++ . '</td>
                     <td>' . $created_at . '</td>
-                    <td>'. $row['nama_barang'] .'</td>
-                    <td>'. $row['kapasitas'] .'</td>
-                    <td>'. $row['nama_pengirim'] .'</td>
-                    <td>'. $row['no_plat'] .'</td>
-                    <td>'. $row['nama_penerima'] .'</td>
-                    <td>' . $row['daerah_asal'] . '</td>
-                    <td>' . $row['daerah_tujuan'] . '</td>
+                    <td>'. $row['jumlah_peb'] .'</td>
+                    <td>'. $row['netto'] .' kg</td>
+                    <td>$.' . number_format($row['devisa_usd']) . '</td>
+                    <td>Rp.' . number_format($row['devisa_rp']) . '</td>
+                    <td>'. $row['komoditi_ekspor'] .'</td>
+                    <td>' . $row['sarana_angkut_ekspor'] . '</td>
+                    <td>' . $row['jumlah_pib'] . '</td>
+                    <td>' . $row['bruto'] . ' kg</td>
                     <td>Rp.' . number_format($row['bea_masuk']) . '</td>
-                    <td>Rp.' . number_format($row['total_harga']) . '</td>
+                    <td>' . $row['komoditi'] . '</td>
+                    <td>' . $row['sarana_angkut_impor'] . '</td>
                  </tr>';
     }
     $html .= '</table>';
     $mpdf->WriteHTML($html);
-    $mpdf->Output('data_laporan_keuangan_bea_masuk_plbn_motamasin.pdf', 'D');
+    $mpdf->Output('data_kegiatan_kepabeanan_plbn_motamasin.pdf', 'D');
   }
 
   function exportLaporanKeuanganToExcel($conn)
   {
-    $query = "SELECT data_izin.*, kategori.nama_kategori, data_barang.nama_barang, export_import.id_kategori, export_import.id_barang, export_import.kapasitas, export_import.tgl_pengiriman, export_import.daerah_asal, export_import.daerah_tujuan
-      FROM data_izin 
-      JOIN export_import ON data_izin.id_export_import = export_import.id_export_import 
-      JOIN kategori ON export_import.id_kategori = kategori.id_kategori 
-      JOIN data_barang ON export_import.id_barang = data_barang.id_barang 
-      ORDER BY data_izin.id_izin DESC";
+    $query = "SELECT * FROM keuangan ORDER BY id_keuangan DESC";
     $result = mysqli_query($conn, $query);
     $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
     $spreadsheet->getProperties()->setCreator('Creator')
@@ -1626,16 +1624,18 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       ->setCategory('Data');
     $sheet = $spreadsheet->getActiveSheet();
     $sheet->setCellValue('A1', 'No');
-    $sheet->setCellValue('B1', 'Tgl Pengiriman');
-    $sheet->setCellValue('C1', 'Barang');
-    $sheet->setCellValue('D1', 'Kapasitas');
-    $sheet->setCellValue('E1', 'Nama Pengirim');
-    $sheet->setCellValue('F1', 'No. Plat Kendaraan');
-    $sheet->setCellValue('G1', 'Nama Penerima');
-    $sheet->setCellValue('H1', 'Daerah Asal');
-    $sheet->setCellValue('I1', 'Daerah Tujuan');
-    $sheet->setCellValue('J1', 'BEA Masuk');
-    $sheet->setCellValue('K1', 'Total Harga');
+    $sheet->setCellValue('B1', 'Tanggal');
+    $sheet->setCellValue('C1', 'Jumlah PEB');
+    $sheet->setCellValue('D1', 'Netto (KG)');
+    $sheet->setCellValue('E1', 'Devisa (USD)');
+    $sheet->setCellValue('F1', 'Devisa (RP)');
+    $sheet->setCellValue('G1', 'Komoditi Ekspor');
+    $sheet->setCellValue('H1', 'Sarana Angkut Ekspor');
+    $sheet->setCellValue('I1', 'Jumlah PIB');
+    $sheet->setCellValue('J1', 'Bruto (KG)');
+    $sheet->setCellValue('K1', 'Penerimaan Bea Masuk (RP)');
+    $sheet->setCellValue('L1', 'Komoditi');
+    $sheet->setCellValue('M1', 'Sarana Angkut');
     $row = 2;
     $no = 1;
     while ($row_data = mysqli_fetch_assoc($result)) {
@@ -1643,15 +1643,17 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       $created_at = date_format($created_at, "d M Y");
       $sheet->setCellValue('A' . $row, $no);
       $sheet->setCellValue('B' . $row, $created_at);
-      $sheet->setCellValue('C' . $row, $row_data['nama_barang']);
-      $sheet->setCellValue('D' . $row, $row_data['kapasitas']);
-      $sheet->setCellValue('E' . $row, $row_data['nama_pengirim']);
-      $sheet->setCellValue('F' . $row, $row_data['no_plat']);
-      $sheet->setCellValue('G' . $row, $row_data['nama_penerima']);
-      $sheet->setCellValue('H' . $row, $row_data['daerah_asal']);
-      $sheet->setCellValue('I' . $row, $row_data['daerah_tujuan']);
-      $sheet->setCellValue('J' . $row, "Rp.".number_format($row_data['bea_masuk']));
-      $sheet->setCellValue('K' . $row, "Rp.".number_format($row_data['total_harga']));
+      $sheet->setCellValue('C' . $row, $row_data['jumlah_peb']);
+      $sheet->setCellValue('D' . $row, $row_data['netto']." kg");
+      $sheet->setCellValue('E' . $row, "$.".number_format($row_data['devisa_usd']));
+      $sheet->setCellValue('F' . $row, "Rp.".number_format($row_data['devisa_rp']));
+      $sheet->setCellValue('G' . $row, $row_data['komoditi_ekspor']);
+      $sheet->setCellValue('H' . $row, $row_data['sarana_angkut_ekspor']);
+      $sheet->setCellValue('I' . $row, $row_data['jumlah_pib']);
+      $sheet->setCellValue('J' . $row, $row_data['bruto']." kg");
+      $sheet->setCellValue('K' . $row, "Rp.".number_format($row_data['bea_masuk']));
+      $sheet->setCellValue('L' . $row, $row_data['komoditi_impor']);
+      $sheet->setCellValue('M' . $row, $row_data['sarana_angkut_impor']);
       $row++;
       $no++;
     }
@@ -1669,6 +1671,18 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
 
   function keuangan($conn, $data, $action)
   {
+    if ($action == "insert") {
+      $sql = "INSERT INTO keuangan(jumlah_peb,netto,devisa_usd,devisa_rp,komoditi_ekspor,sarana_angkut_ekspor,jumlah_pib,bruto,bea_masuk,komoditi_impor,sarana_angkut_impor) VALUES('$data[jumlah_peb]','$data[netto]','$data[devisa_usd]','$data[devisa_rp]','$data[komoditi_ekspor]','$data[sarana_angkut_ekspor]','$data[jumlah_pib]','$data[bruto]','$data[bea_masuk]','$data[komoditi_impor]','$data[sarana_angkut_impor]')";
+    }
+
+    if ($action == "update") {
+      $sql = "UPDATE keuangan SET jumlah_peb='$data[jumlah_peb]', netto='$data[netto]', devisa_usd='$data[devisa_usd]', devisa_rp='$data[devisa_rp]', komoditi_ekspor='$data[komoditi_ekspor]', sarana_angkut_ekspor='$data[sarana_angkut_ekspor]', jumlah_pib='$data[jumlah_pib]', bruto='$data[bruto]', bea_masuk='$data[bea_masuk]', komoditi_impor='$data[komoditi_impor]', sarana_angkut_impor='$data[sarana_angkut_impor]' WHERE id_keuangan='$data[id_keuangan]'";
+    }
+
+    if ($action == "delete") {
+      $sql = "DELETE FROM keuangan WHERE id_keuangan='$data[id_keuangan]'";
+    }
+
     if ($action == "export") {
       if ($data['format_file'] === "pdf") {
         exportLaporanKeuanganToPDF($conn);
@@ -1677,7 +1691,7 @@ if (isset($_SESSION["project_plbn_motamasin"]["users"])) {
       }
     }
 
-    // mysqli_query($conn, $sql);
+    mysqli_query($conn, $sql);
     return mysqli_affected_rows($conn);
   }
   

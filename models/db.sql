@@ -1,4 +1,4 @@
--- Active: 1711937588478@@127.0.0.1@3306@plbn_motamasin
+-- Active: 1721730379871@@127.0.0.1@3306@plbn_motamasin
 CREATE TABLE
   auth (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -90,6 +90,7 @@ CREATE TABLE
   data_barang (
     id_barang INT AUTO_INCREMENT PRIMARY KEY,
     nama_barang VARCHAR(75),
+    detail_barang TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   );
@@ -107,6 +108,7 @@ CREATE TABLE
     id_export_import INT AUTO_INCREMENT PRIMARY KEY,
     id_kategori INT,
     id_barang INT,
+    keterangan_barang TEXT,
     kapasitas VARCHAR(50),
     tgl_pengiriman DATE,
     daerah_asal VARCHAR(50),
@@ -134,4 +136,22 @@ CREATE TABLE
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (id_export_import) REFERENCES export_import (id_export_import) ON UPDATE CASCADE ON DELETE CASCADE
+  );
+
+CREATE TABLE
+  keuangan (
+    id_keuangan INT AUTO_INCREMENT PRIMARY KEY,
+    jumlah_peb INT,
+    netto INT,
+    devisa_usd INT,
+    devisa_rp INT,
+    komoditi_ekspor VARCHAR(100),
+    sarana_angkut_ekspor INT,
+    jumlah_pib INT,
+    bruto INT,
+    bea_masuk INT,
+    komoditi_impor VARCHAR(100),
+    sarana_angkut_impor INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
   );
